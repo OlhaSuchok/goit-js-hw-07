@@ -2,7 +2,7 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const galleryImages = document.querySelector(".gallery");
-console.log(galleryImages);
+// console.log(galleryImages);
 
 const makeImage = function () {
   return galleryItems
@@ -24,9 +24,27 @@ const makeImage = function () {
 };
 
 galleryImages.insertAdjacentHTML("afterbegin", makeImage());
-galleryImages.addEventListener("click", selectImage());
+galleryImages.addEventListener("click", imageCheckedHandler);
 
-function selectImage(event) {}
+function imageCheckedHandler(event) {
+  event.preventDefault();
 
-console.log(makeImage());
-console.log(galleryItems);
+  const isImageClickedHandler =
+    event.target.classList.contains(".gallery__item");
+  const currentImageSource = event.target.dataset.source;
+  console.log(currentImageSource);
+
+  console.log(event.target);
+  console.log(event.target.dataset.source);
+  console.log(event.currentTarget);
+
+  if (isImageClickedHandler) {
+    return;
+  }
+
+  const instance = basicLightbox.create(`
+    <img src="${currentImageSource}">
+`);
+
+  instance.show();
+}
