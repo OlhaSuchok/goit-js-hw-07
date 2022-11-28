@@ -2,7 +2,6 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const galleryImages = document.querySelector(".gallery");
-// console.log(galleryImages);
 
 const makeImage = function () {
   return galleryItems
@@ -26,11 +25,14 @@ const makeImage = function () {
 galleryImages.insertAdjacentHTML("afterbegin", makeImage());
 galleryImages.addEventListener("click", imageCheckedHandler);
 
+let instance;
+
 function imageCheckedHandler(event) {
   event.preventDefault();
 
   const isImageClickedHandler =
-    event.target.classList.contains(".gallery__item");
+    event.target.classList.contains(".gallery__image");
+
   const currentImageSource = event.target.dataset.source;
   console.log(currentImageSource);
 
