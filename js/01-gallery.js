@@ -36,10 +36,6 @@ function imageCheckedHandler(event) {
   const currentImageSource = event.target.dataset.source;
   console.log(currentImageSource);
 
-  console.log(event.target);
-  console.log(event.target.dataset.source);
-  console.log(event.currentTarget);
-
   if (isImageClickedHandler) {
     return;
   }
